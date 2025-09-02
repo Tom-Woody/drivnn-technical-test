@@ -1,12 +1,63 @@
-# React + Vite
+# Deck of Cards App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that simulates drawing cards from a deck. It displays the current and previous card, tracks matches by value or suit, and calculates probabilities for the next draw.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Draw cards from a full 52-card deck.
+- Display current and previous cards.
+- Highlight matches by suit or value.
+- Show probabilities for a suit match, value match, or either on the next draw.
+- Automated tests with Vitest.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js >= 18
+- npm or yarn
+
+---
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:USERNAME/REPO.git
+cd REPO
+```
+
+Install dependencies:
+
+npm install
+
+# or
+
+yarn install
+
+Running the App
+
+Start the development server:
+
+npm run dev
+
+# or
+
+yarn dev
+
+Running Tests
+
+The project uses Vitest for testing. Test files are located in src/**tests**/.
+
+Run all tests:
+
+npm run test
+
+# or
+
+yarn test
