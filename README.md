@@ -28,8 +28,7 @@ A React application that simulates drawing cards from a deck. It displays the cu
 1. Clone the repository:
 
 ```bash
-git clone git@github.com:USERNAME/REPO.git
-cd REPO
+git clone git@github.com:Tom-Woody/drivnn-technical-test.git
 ```
 
 Install dependencies:
