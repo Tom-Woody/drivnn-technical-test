@@ -34,22 +34,30 @@ function App() {
     getDeck();
   }, []);
 
-  const handleRestart = () => {
-    setCurrentCard(null);
-    setPreviousCard(null);
-    setRemainingCards(52);
-    setButtonCount(0);
-    setSuitMatches(0);
-    setValueMatches(0);
-    setMessage("");
-    // Optionally reshuffle a new deck
+    const restartGame = async () => {
+    const url = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1";
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      setDeckId(result.deck_id);
+
+      setCurrentCard(null);
+      setPreviousCard(null);
+      setButtonCount(0);
+      setRemainingCards(52);
+      setMessage("");
+      setSuitMatches(0);
+      setValueMatches(0);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   if (remainingCards <= 0) {
     return <GameOver 
       suitMatches={suitMatches} 
       valueMatches={valueMatches} 
-      onRestart={handleRestart} 
+      onRestart={restartGame} 
     />;
   }
 
