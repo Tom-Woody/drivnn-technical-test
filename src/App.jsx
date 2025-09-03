@@ -3,8 +3,8 @@ import DrawButton from "./components/DrawButton";
 import CardDisplay from "./components/CardDisplay";
 import MessageBanner from "./components/MessageBanner";
 import ResultDisplay from "./components/ResultDisplay";
-import ProbabilityDisplay from "./components/probabilityDisplay";
 import GameOver from "./components/GameOver";
+
 import "./App.css";
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   const [buttonCount, setButtonCount] = useState(0);
   const [suitMatches, setSuitMatches] = useState(0);
   const [valueMatches, setValueMatches] = useState(0);
+  const [discardPile, setDiscardPile] = useState([]);
 
   useEffect(() => {
     const getDeck = async () => {
@@ -90,6 +91,7 @@ function App() {
         previousCard={previousCard}
         remainingCards={remainingCards}
         setRemainingCards={setRemainingCards}
+
       />
 
       <ResultDisplay
@@ -99,10 +101,6 @@ function App() {
         setValueMatches={setValueMatches}
       />
 
-      <ProbabilityDisplay
-        currentCard={currentCard}
-        remainingCards={remainingCards}
-      />
     </>
   );
 }

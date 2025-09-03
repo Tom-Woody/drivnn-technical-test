@@ -12,25 +12,34 @@ function DrawButton({
   remainingCards,
 }) {
   const url = `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`;
-  const drawNewCard = async () => {
-    if (!deckId) return;
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
-      const result = await response.json();
-      const newCard = result.cards[0];
+const drawNewCard = async () => {
+  if (!deckId || remainingCards <= 0) return;
 
-      setPreviousCard(currentCard);
-      setCurrentCard(newCard);
-      setRemainingCards(result.remaining);
+  try {
 
-    } catch (error) {
-      console.error(error.message);
+
+    const drawResponse = await fetch(
+      `https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`
+    );
+    if (!drawResponse.ok) throw new Error("Failed to draw card.");
+    const drawResult = await drawResponse.json();
+    const newCard = drawResult.cards[0];
+
+    if (currentCard) {
+      await fetch(
+        `https://deckofcardsapi.com/api/deck/${deckId}/pile/discard/add/?cards=${currentCard.code}`
+      );
     }
-    return;
-  };
+
+    setPreviousCard(currentCard);
+    setCurrentCard(newCard);
+    setRemainingCards(drawResult.remaining);
+    setButtonCount(prev => prev + 1);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   const handleClick = () => {
     drawNewCard(); 
